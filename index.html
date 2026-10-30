@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#123b65">
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/icon-192.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="TNPSC Vetri"><meta name="description" content="தமிழ் மற்றும் ஆங்கில TNPSC தேர்வுத் தயாரிப்பு">
@@ -196,7 +196,7 @@ $("copyUrl").onclick=async()=>{const url=$("shareUrl").value.trim()||location.hr
 $("shareUrl").oninput=()=>{const url=$("shareUrl").value.trim();$("qrOutput").innerHTML=url?'<img alt="QR Code" style="max-width:180px;width:100%" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data='+encodeURIComponent(url)+'">':""};
 $("qrImage").onchange=()=>{$("qrResult").textContent="படக் கோப்பிலிருந்து QR வாசிப்பதற்கு Camera Scanner பயன்படுத்தவும். இந்த பதிப்பில் Image file decoding இன்னும் சேர்க்கப்படவில்லை."};
 let installPrompt;$("installBtn").hidden=true;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;$("installBtn").hidden=false});$("installBtn").onclick=async()=>{if(installPrompt){installPrompt.prompt();installPrompt=null}};
-if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));
+if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{scope:"./"}).catch(()=>{}));
 
 // Added feature UI: local demonstrations only; production services require backend integrations.
 const plans=JSON.parse(localStorage.getItem('tnpsc_plans')||'[]');
